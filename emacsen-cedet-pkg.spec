@@ -10,7 +10,7 @@ Version:	1.0
 Release:	0.beta%{_beta}.1
 License:	GPL
 Group:		Applications/Editors/Emacs
-Source0:	http://dl.sourceforge.net/%{_the_name}/%{_the_name}-%{version}beta%{_beta}.tar.gz
+Source0:	http://dl.sourceforge.net/cedet/%{_the_name}-%{version}beta%{_beta}.tar.gz
 # Source0-md5:	f24a07c8c934596fb33a81b653edaf73
 URL:		http://cedet.sf.net/
 BuildRequires:	texinfo
@@ -39,7 +39,6 @@ Ten pakiet zawiera pliki CEDET wspólne dla GNU Emacsa i XEmacsa.
 
 %define version_of() %{expand:%%(rpm -q %1 --queryformat '%%%%{version}-%%%%{release}')}
 
-%if %{with emacs}
 %package emacs
 Summary:	CEDET compiled elisp files for GNU Emacs
 Summary(pl):	Skompilowany kod elisp CEDET dla GNU Emacsa
@@ -65,10 +64,7 @@ This package contains CEDET source elisp files for GNU Emacs
 
 %description emacs-el -l pl
 Pakiet zawiera ¼ród³owe pliki elisp z kodem CEDET dla GNU Emacsa.
-%endif
 
-
-%if %{with xemacs}
 %package xemacs
 Summary:	CEDET elisp files for XEmacs
 Summary(pl):	Kod elisp CEDET dla XEmacsa
@@ -94,15 +90,11 @@ This package contains source CEDET elisp files for  XEmacs
 
 %description xemacs-el -l pl
 Pakiet zawiera pliki ¼ród³owe elisp z kodem CEDET dla XEmacsa.
-%endif
-
 
 %prep
 %setup -q -n %{_the_name}-%{version}beta%{_beta}
 
-
 %build
-
 # Move documentation
 for F in */{INSTALL,README,ChangeLog,AUTHORS,NEWS,ONEWS}; do \
 	cp $F `echo $F | sed 's-\(.*\)/\(.*\)-\2.\1-'`; done
@@ -113,20 +105,19 @@ mkdir _xemacs
 
 %if %{with emacs}
 mkdir _emacs
-cp -a [^_]* _emacs
+cp -a [!_]* _emacs
 %{__make} -C _emacs \
 	EMACS=emacs
 %endif
 
 %install
-
-mkdir -p $RPM_BUILD_ROOT%{_infodir}
+install -d $RPM_BUILD_ROOT%{_infodir}
 
 %if %{with xemacs}
 %endif
 
 %if %{with emacs}
-mkdir -p $RPM_BUILD_ROOT{%{_emacs_lispdir},%{_datadir}/emacs/cedet}
+install -d $RPM_BUILD_ROOT{%{_emacs_lispdir},%{_datadir}/emacs/cedet}
 cp -a _emacs/* $RPM_BUILD_ROOT%{_datadir}/emacs/cedet/
 cat >$RPM_BUILD_ROOT%{_emacs_lispdir}/cedet.el <<EOF
 ;; Load CEDET
@@ -146,7 +137,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc INSTALL* README* ChangeLog* AUTHORS* NEWS* ONEWS*
-%{_infodir}/*
+%{_infodir}/*.info*
 
 %if %{with emacs}
 %files emacs
