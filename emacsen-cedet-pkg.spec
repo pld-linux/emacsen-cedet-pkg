@@ -43,7 +43,7 @@ Ten pakiet zawiera pliki CEDET wspólne dla GNU Emacsa i XEmacsa.
 %package emacs
 Summary:	CEDET compiled elisp files for GNU Emacs
 Summary(pl):	Skompilowany kod elisp CEDET dla GNU Emacsa
-Group:		Applications/Networking
+Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 Requires:	emacs = %{version_of emacs}
 Provides:	cedet-elisp-code = %{version}-%{release}
@@ -57,7 +57,7 @@ Pakiet zawiera skompilowane pliki elisp z kodem CEDET dla GNU Emacsa.
 %package emacs-el
 Summary:	CEDET elisp files for GNU Emacs
 Summary(pl):	Kod elisp CEDET dla GNU Emacsa
-Group:		Applications/Networking
+Group:		Applications/Editors/Emacs
 Requires:	%{name}-emacs = %{version}-%{release}
 
 %description emacs-el
@@ -72,7 +72,7 @@ Pakiet zawiera ¼ród³owe pliki elisp z kodem CEDET dla GNU Emacsa.
 %package xemacs
 Summary:	CEDET elisp files for XEmacs
 Summary(pl):	Kod elisp CEDET dla XEmacsa
-Group:		Applications/Networking
+Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 Requires:	xemacs = %{version_of xemacs}
 Provides:	cedet-elisp-code = %{version}-%{release}
@@ -86,7 +86,7 @@ Pakiet zawiera skompilowane pliki elisp z kodem CEDET dla XEmacsa.
 %package xemacs-el
 Summary:	CEDET elisp source files for XEmacs
 Summary(pl):	Kod ¼ród³owy elisp CEDET dla XEmacsa
-Group:		Applications/Networking
+Group:		Applications/Editors/Emacs
 Requires:	%{name}-xemacs = %{version}-%{release}
 
 %description xemacs-el
