@@ -1,6 +1,9 @@
 # TODO: build for xemacs
+#
+# Conditional build:
 %bcond_with	xemacs	# Build without XEmacs support
 %bcond_without	emacs	# Build without GNU Emacs support
+#
 %define		_the_name cedet
 %define		_beta 3b
 Summary:	Collection of Emacs development tools
