@@ -15,7 +15,7 @@ License:	GPL
 Group:		Applications/Editors/Emacs
 Source0:	http://dl.sourceforge.net/cedet/%{_the_name}-%{version}beta%{_beta}.tar.gz
 # Source0-md5:	f24a07c8c934596fb33a81b653edaf73
-URL:		http://cedet.sf.net/
+URL:		http://cedet.sourceforge.net/
 BuildRequires:	texinfo
 %if %{with emacs}
 BuildRequires:	emacs
@@ -89,7 +89,7 @@ Group:		Applications/Editors/Emacs
 Requires:	%{name}-xemacs = %{version}-%{release}
 
 %description xemacs-el
-This package contains source CEDET elisp files for  XEmacs
+This package contains source CEDET elisp files for XEmacs
 
 %description xemacs-el -l pl
 Pakiet zawiera pliki ¼ród³owe elisp z kodem CEDET dla XEmacsa.
@@ -114,6 +114,7 @@ cp -a [!_]* _emacs
 %endif
 
 %install
+rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_infodir}
 
 %if %{with xemacs}
