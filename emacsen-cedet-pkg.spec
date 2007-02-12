@@ -7,7 +7,7 @@
 %define		_the_name cedet
 %define		_beta 3b
 Summary:	Collection of Emacs development tools
-Summary(pl.UTF-8):   Zbiór narzędzi programistycznych dla Emacsa
+Summary(pl.UTF-8):	Zbiór narzędzi programistycznych dla Emacsa
 Name:		emacsen-cedet-pkg
 Version:	1.0
 Release:	0.beta%{_beta}.1
@@ -44,7 +44,7 @@ Ten pakiet zawiera pliki CEDET wspólne dla GNU Emacsa i XEmacsa.
 
 %package emacs
 Summary:	CEDET compiled elisp files for GNU Emacs
-Summary(pl.UTF-8):   Skompilowany kod elisp CEDET dla GNU Emacsa
+Summary(pl.UTF-8):	Skompilowany kod elisp CEDET dla GNU Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 Requires:	emacs = %{version_of emacs}
@@ -58,7 +58,7 @@ Pakiet zawiera skompilowane pliki elisp z kodem CEDET dla GNU Emacsa.
 
 %package emacs-el
 Summary:	CEDET elisp files for GNU Emacs
-Summary(pl.UTF-8):   Kod elisp CEDET dla GNU Emacsa
+Summary(pl.UTF-8):	Kod elisp CEDET dla GNU Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name}-emacs = %{version}-%{release}
 
@@ -70,7 +70,7 @@ Pakiet zawiera źródłowe pliki elisp z kodem CEDET dla GNU Emacsa.
 
 %package xemacs
 Summary:	CEDET elisp files for XEmacs
-Summary(pl.UTF-8):   Kod elisp CEDET dla XEmacsa
+Summary(pl.UTF-8):	Kod elisp CEDET dla XEmacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
 Requires:	xemacs = %{version_of xemacs}
@@ -84,7 +84,7 @@ Pakiet zawiera skompilowane pliki elisp z kodem CEDET dla XEmacsa.
 
 %package xemacs-el
 Summary:	CEDET elisp source files for XEmacs
-Summary(pl.UTF-8):   Kod źródłowy elisp CEDET dla XEmacsa
+Summary(pl.UTF-8):	Kod źródłowy elisp CEDET dla XEmacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name}-xemacs = %{version}-%{release}
 
