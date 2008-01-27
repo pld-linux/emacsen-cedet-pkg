@@ -40,15 +40,13 @@ zaawansowanego środowiska programistycznego w Emacsie.
 
 Ten pakiet zawiera pliki CEDET wspólne dla GNU Emacsa i XEmacsa.
 
-%define version_of() %{expand:%%(rpm -q %1 --queryformat '%%%%{version}-%%%%{release}')}
-
 %package emacs
 Summary:	CEDET compiled elisp files for GNU Emacs
 Summary(pl.UTF-8):	Skompilowany kod elisp CEDET dla GNU Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
-Requires:	emacs = %{version_of emacs}
 Provides:	cedet-elisp-code = %{version}-%{release}
+%requires_eq emacs
 
 %description emacs
 This package contains compiled elisp files needed to run CEDET on GNU Emacs
@@ -73,8 +71,8 @@ Summary:	CEDET elisp files for XEmacs
 Summary(pl.UTF-8):	Kod elisp CEDET dla XEmacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
-Requires:	xemacs = %{version_of xemacs}
 Provides:	cedet-elisp-code = %{version}-%{release}
+%requires_eq xemacs
 
 %description xemacs
 This package contains compiled elisp files needed to run CEDET on XEmacs
@@ -123,7 +121,7 @@ install -d $RPM_BUILD_ROOT%{_infodir}
 %if %{with emacs}
 install -d $RPM_BUILD_ROOT{%{_emacs_lispdir},%{_datadir}/emacs/cedet}
 cp -a _emacs/* $RPM_BUILD_ROOT%{_datadir}/emacs/cedet/
-cat >$RPM_BUILD_ROOT%{_emacs_lispdir}/cedet.el <<EOF
+cat > $RPM_BUILD_ROOT%{_emacs_lispdir}/cedet.el <<'EOF'
 ;; Load CEDET
 (load-file "%{_datadir}/emacs/cedet/common/cedet.elc")
 ;; Enabling SEMANTIC minor modes.  See semantic/INSTALL for more ideas.
