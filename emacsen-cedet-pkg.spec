@@ -5,15 +5,15 @@
 %bcond_without	emacs	# Build without GNU Emacs support
 #
 %define		_the_name cedet
-%define		_beta 3b
 Summary:	Collection of Emacs development tools
 Summary(pl.UTF-8):	Zbiór narzędzi programistycznych dla Emacsa
 Name:		emacsen-cedet-pkg
 Version:	1.0
-Release:	0.beta%{_beta}.1
+%define	subver	beta3b
+Release:	0.%{subver}.1
 License:	GPL
 Group:		Applications/Editors/Emacs
-Source0:	http://dl.sourceforge.net/cedet/%{_the_name}-%{version}beta%{_beta}.tar.gz
+Source0:	http://dl.sourceforge.net/cedet/%{_the_name}-%{version}%{subver}.tar.gz
 # Source0-md5:	f24a07c8c934596fb33a81b653edaf73
 URL:		http://cedet.sourceforge.net/
 BuildRequires:	texinfo
@@ -45,8 +45,8 @@ Summary:	CEDET compiled elisp files for GNU Emacs
 Summary(pl.UTF-8):	Skompilowany kod elisp CEDET dla GNU Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
+%requires_eq	emacs
 Provides:	cedet-elisp-code = %{version}-%{release}
-%requires_eq emacs
 
 %description emacs
 This package contains compiled elisp files needed to run CEDET on GNU Emacs
@@ -71,8 +71,8 @@ Summary:	CEDET elisp files for XEmacs
 Summary(pl.UTF-8):	Kod elisp CEDET dla XEmacsa
 Group:		Applications/Editors/Emacs
 Requires:	%{name} = %{version}-%{release}
+%requires_eq	xemacs
 Provides:	cedet-elisp-code = %{version}-%{release}
-%requires_eq xemacs
 
 %description xemacs
 This package contains compiled elisp files needed to run CEDET on XEmacs
@@ -93,7 +93,7 @@ This package contains source CEDET elisp files for XEmacs
 Pakiet zawiera pliki źródłowe elisp z kodem CEDET dla XEmacsa.
 
 %prep
-%setup -q -n %{_the_name}-%{version}beta%{_beta}
+%setup -q -n %{_the_name}-%{version}%{subver}
 
 %build
 # Move documentation
